@@ -1,0 +1,7 @@
+.active-tab {
+  @apply bg-black p-2 rounded-lg shadow-2xl transition-all ease-linear duration-100;
+}
+
+.cart-tab {
+  @apply hover:scale-105 ease-linear duration-300;
+}

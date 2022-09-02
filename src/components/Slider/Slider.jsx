@@ -14,7 +14,9 @@ export default function Slider() {
       <div
         className={`basis-full shrink-0 flex items-center justify-center ${slideAnimation}`}>
         <img
-          src={BASE_MOVIE_IMAGES_URL + movie?.backdrop_path}
+          src={
+            BASE_MOVIE_IMAGES_URL + movie?.backdrop_path || movie.poster_path
+          }
           className="h-full object-cover"
           alt={movie?.title}
         />
@@ -36,6 +38,7 @@ export default function Slider() {
                 ? nowPlayingIntl.length - 1
                 : visibleImageIndex - 1
             )
+            // setSlideAnimation("")
           }}>
           <i className="fa-solid fa-angle-left"></i>
         </div>
@@ -50,6 +53,7 @@ export default function Slider() {
                 ? 0
                 : visibleImageIndex + 1
             )
+            // setSlideAnimation("")
           }}>
           <i className="fa-solid fa-angle-right"></i>
         </div>
@@ -61,20 +65,24 @@ export default function Slider() {
     <>
       {/* Arrows - XL Screens */}
       <Arrows classNames="hidden xl:flex" />
-      <BuyNowOverlay
-        classNames="hidden xl:flex"
-        movie={nowPlayingIntl[visibleImageIndex]?.title}
-      />
+      {nowPlayingIntl && (
+        <BuyNowOverlay
+          classNames="hidden xl:flex"
+          movie={nowPlayingIntl[visibleImageIndex]}
+        />
+      )}
       <div className="min-h-[29.333vh] h-fit max-h-[85%] bg-emerald-900 overflow-y-scroll relative ease-linear duration-1000">
         {/* Arrows */}
         <Arrows classNames="xl:hidden" />
         <BuyNowOverlay
           classNames="xl:hidden scale-75 sm:scale-100"
-          movie={nowPlayingIntl[visibleImageIndex]?.title}
+          movie={nowPlayingIntl[visibleImageIndex]}
         />
-        <div className="flex" ref={sliderRef}>
-          <RenderMovieBackdrop movie={nowPlayingIntl[visibleImageIndex]} />
-        </div>
+        {nowPlayingIntl[visibleImageIndex] && (
+          <div className="flex" ref={sliderRef}>
+            <RenderMovieBackdrop movie={nowPlayingIntl[visibleImageIndex]} />
+          </div>
+        )}
       </div>
     </>
   )

@@ -182,8 +182,8 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 0.2rem;
-  height: 0.2rem;
+  width: 0rem;
+  height: 0rem;
   background-color: #1e1e2d;
 }
 

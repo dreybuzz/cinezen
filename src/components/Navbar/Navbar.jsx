@@ -1,7 +1,12 @@
+import { useContext, useState } from "react"
+import { MovieAPIContext } from "../../contexts/MovieAPIContext"
+import Cart from "../Cart/Cart"
 import CustomSelect from "../CustomSelect/CustomSelect"
 import "/node_modules/flag-icons/css/flag-icons.min.css"
 
 export default function Navbar() {
+  const { cart } = useContext(MovieAPIContext)
+  const [showCart, setShowCart] = useState(false)
   return (
     <div className="flex font-quicksand bg-white p-2 flex-wrap justify-between ">
       {/* Language Select & Search Bar*/}
@@ -60,10 +65,43 @@ export default function Navbar() {
 
       {/* Account & Cart */}
       <div className="hidden flex-1 md:flex items-center justify-end px-2 gap-4 lg:gap-6 cursor-pointer">
-        <span className="flex items-center justify-center uppercase text-sm lg:text-base border border-gray-500 p-2 font-semibold ease-linear duration-200 hover:scale-105 hover:bg-black hover:text-white">
+        {/* Register / Sign in */}
+        <span className="flex items-center justify-center uppercase text-sm lg:text-base border border-gray-500 p-2 font-semibold hover:bg-black hover:text-white">
           <i className="fa-solid fa-user mr-1"></i> Register / Sign In
         </span>
-        <i className="fa-solid fa-cart-shopping lg:text-xl"></i>
+
+        {/* Cart */}
+        <div
+          className="p-3 cursor-pointer hover:text-red-500 ease-linear duration-200 relative"
+          onClick={() => {
+            setShowCart(!showCart)
+          }}
+          onMouseLeave={() => {
+            // setShowCart(false)
+          }}
+          onMouseOver={() => {
+            setShowCart(true)
+          }}>
+          <i className="fa-solid fa-cart-shopping lg:text-xl z-10"></i>
+          {cart.length > 0 && (
+            <span className="absolute text-sm text-white bg-black w-6 h-6 rounded-full justify-center items-center flex top-[5px] right-0">
+              {cart.length}
+            </span>
+          )}
+
+          {/* Cart Items */}
+          <div
+            className={`duration-200 overflow-hidden transition-all absolute ${
+              showCart
+                ? "z-20 min-h-[48rem] max-h-48 bg-slate-600 p-2 min-w-[24rem] text-white rounded-lg w-fit whitespace-nowrap flex flex-nowrap top-12 right-2 overflow-scroll"
+                : "w-0 overflow-hidden h-0 top-20 right-10"
+            }`}
+            onClick={(e) => {
+              e.stopPropagation()
+            }}>
+            <Cart />
+          </div>
+        </div>
       </div>
 
       {/* Mobile Menu */}

@@ -1,4 +1,5 @@
 import Announcement from "./components/Announcement/Announcement"
+import Footer from "./components/Footer/Footer"
 import Navbar from "./components/Navbar/Navbar"
 
 export default function Layout({ children }) {
@@ -9,6 +10,7 @@ export default function Layout({ children }) {
         <Navbar />
       </div>
       {children}
+      <Footer />
     </div>
   )
 }

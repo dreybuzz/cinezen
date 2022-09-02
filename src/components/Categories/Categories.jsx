@@ -22,30 +22,39 @@ export default function Categories() {
   return (
     <div className="mx-10 flex flex-wrap gap-5 justify-center items-center mt-5 mb-10">
       {/* Cinemas */}
-      <div className="category">
-        <img src={cinemas} alt="Cinemas" className="category-image" />
-        <CategoryText title="Cinemas" />
-      </div>
+      {
+        <div className="category">
+          <img src={cinemas} alt="Cinemas" className="category-image" />
+          <CategoryText title="Cinemas" />
+        </div>
+      }
 
       {/* Now Showing */}
-      <div className="category">
-        <img
-          src={BASE_MOVIE_IMAGES_URL + nowPlayingIntl[0]?.poster_path}
-          alt="Now Showing"
-          className="category-image"
-        />
-        <CategoryText title="Now Showing" />
-      </div>
+      {nowPlayingIntl[0] && (
+        <div className="category">
+          <img
+            src={BASE_MOVIE_IMAGES_URL + nowPlayingIntl[0]?.poster_path}
+            alt="Now Showing"
+            className="category-image"
+          />
+          <CategoryText title="Now Showing" />
+        </div>
+      )}
 
       {/* Upcoming */}
-      <div className="category">
-        <img
-          src={BASE_MOVIE_IMAGES_URL + upcoming[0]?.poster_path}
-          alt="Upcoming Movies"
-          className="category-image"
-        />
-        <CategoryText title="Upcoming Titles" />
-      </div>
+      {upcoming[0] && (
+        <div className="category">
+          <img
+            src={
+              BASE_MOVIE_IMAGES_URL +
+              upcoming[Math.floor(Math.random() * upcoming.length)]?.poster_path
+            }
+            alt="Upcoming Movies"
+            className="category-image"
+          />
+          <CategoryText title="Upcoming Titles" />
+        </div>
+      )}
     </div>
   )
 }

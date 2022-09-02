@@ -1,0 +1,11 @@
+.movie-card-buy-now-overlay {
+  /* @apply text-red-500; */
+}
+
+.movie-card-img:hover {
+  /* @apply hover:scale-[1.01]; */
+}
+
+.movie-card-img:hover .movie-card-buy-now-overlay {
+  @apply opacity-100;
+}
