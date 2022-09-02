@@ -77,7 +77,7 @@ export default function Navbar() {
             setShowCart(!showCart)
           }}
           onMouseLeave={() => {
-            // setShowCart(false)
+            setShowCart(false)
           }}
           onMouseOver={() => {
             setShowCart(true)
