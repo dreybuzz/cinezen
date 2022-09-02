@@ -10,7 +10,7 @@ import Partners from "./components/Partners/Partners"
 import { sortCartByCinema, sortCartByMovie } from "./constants/helperFunctions"
 
 const MOVIES_API_KEY = "9e1f73b46b9839eb16cdad61cd9511c8"
-const NEWS_API_KEY = "pub_10805266a41af8a7b2f48a644804fc6c72775--"
+const NEWS_API_KEY = "pub_10805266a41af8a7b2f48a644804fc6c72775"
 
 export default function App() {
   async function getMovies(url, query, optionalParamData = null) {
@@ -85,7 +85,7 @@ export default function App() {
     getNowPlayingLocal()
     getNowPlayingIntl()
     getUpcoming()
-    getNews()
+    // getNews()
   }, [])
 
   const [cart, setCart] = useState([])
