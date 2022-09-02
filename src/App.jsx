@@ -86,7 +86,7 @@ export default function App() {
     getNowPlayingIntl()
     getUpcoming()
     getNews()
-  }, [])
+  }, [getNowPlayingLocal, getNowPlayingIntl, getUpcoming, getNews])
 
   const [cart, setCart] = useState([])
   const [cartByMovie, setCartByMovie] = useState(sortCartByMovie(cart))
