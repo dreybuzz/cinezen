@@ -1,11 +1,11 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { MovieAPIContext } from "../../contexts/MovieAPIContext"
 import { BASE_MOVIE_IMAGES_URL } from "../../constants/helperFunctions"
 import BuyNowOverlay from "../BuyNowOverlay/BuyNowOverlay"
 
 export default function Slider() {
   const sliderRef = useRef()
-  const { nowPlayingLocal, nowPlayingIntl } = useContext(MovieAPIContext)
+  const { nowPlayingIntl } = useContext(MovieAPIContext)
   const [visibleImageIndex, setVisibleImageIndex] = useState(0)
   const [slideAnimation, setSlideAnimation] = useState("")
 
@@ -34,7 +34,7 @@ export default function Slider() {
           onClick={() => {
             setSlideAnimation("rotate-in-2-cw")
             setVisibleImageIndex(() =>
-              visibleImageIndex == 0
+              visibleImageIndex === 0
                 ? nowPlayingIntl.length - 1
                 : visibleImageIndex - 1
             )
@@ -49,7 +49,7 @@ export default function Slider() {
           onClick={() => {
             setSlideAnimation("puff-in-right")
             setVisibleImageIndex(() =>
-              visibleImageIndex == nowPlayingIntl.length - 1
+              visibleImageIndex === nowPlayingIntl.length - 1
                 ? 0
                 : visibleImageIndex + 1
             )

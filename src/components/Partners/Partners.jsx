@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Partners({}) {
+export default function Partners() {
   const partners = [
     {
       name: "HBO Max",
@@ -44,6 +44,7 @@ export default function Partners({}) {
     //   logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/1024px-Disney%2B_logo.svg.png?20220129033317",
     // },
   ]
+
   return (
     <div className="container mx-auto flex flex-wrap gap-5 lg:gap-10 2xl:gap-20 justify-center items-center">
       {partners.map((partner, index) => {

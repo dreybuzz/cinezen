@@ -5,7 +5,7 @@ import MovieCard from "../MovieCard/MovieCard"
 import { cinemas } from "../../constants/cinemas"
 
 export default function MoviesGrid() {
-  const { nowPlayingLocal, nowPlayingIntl } = useContext(MovieAPIContext)
+  const { nowPlayingIntl } = useContext(MovieAPIContext)
   const [movies, setMovies] = useState(nowPlayingIntl)
   const [movie, setMovie] = useState(null)
   const [cinema, setCinema] = useState(null)

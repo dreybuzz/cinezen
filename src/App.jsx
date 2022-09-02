@@ -1,7 +1,7 @@
 import Slider from "./components/Slider/Slider"
 import Layout from "./Layout"
 import { MovieAPIContext } from "./contexts/MovieAPIContext"
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import Categories from "./components/Categories/Categories"
 import MoviesGrid from "./components/MoviesGrid/MoviesGrid"
@@ -10,7 +10,7 @@ import Partners from "./components/Partners/Partners"
 import { sortCartByCinema, sortCartByMovie } from "./constants/helperFunctions"
 
 const MOVIES_API_KEY = "9e1f73b46b9839eb16cdad61cd9511c8"
-const NEWS_API_KEY = "pub_10805266a41af8a7b2f48a644804fc6c72775"
+const NEWS_API_KEY = "pub_10805266a41af8a7b2f48a644804fc6c72775--"
 
 export default function App() {
   async function getMovies(url, query, optionalParamData = null) {
@@ -87,7 +87,7 @@ export default function App() {
     getNowPlayingLocal()
     getNowPlayingIntl()
     getUpcoming()
-    // getNews()
+    getNews()
   }, [])
 
   const [cart, setCart] = useState([])

@@ -11,10 +11,10 @@ export default function BuyNowOverlay({
   date = null,
   time = null,
 }) {
-  const { cart, updateCart } = useContext(MovieAPIContext)
+  const { updateCart } = useContext(MovieAPIContext)
 
   const [ticketAmount, setTicketAmount] = useState("1")
-  const [slideAnimation, setSlideAnimation] = useState("")
+  const [slideAnimation] = useState("")
   return (
     <div
       className={`z-10 flex flex-col justify-center items-center gap-2 backdrop-opacity-40 backdrop-invert bg-white/30 w-fit h-fit p-5 px-0 sm:p-10 absolute top-1/2 -translate-y-1/2 mx-auto left-0 right-0 ${classNames} `}>

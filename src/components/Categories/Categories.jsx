@@ -1,12 +1,11 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext } from "react"
 import { MovieAPIContext } from "../../contexts/MovieAPIContext"
 import { BASE_MOVIE_IMAGES_URL } from "../../constants/helperFunctions"
 
 import cinemas from "./../../assets/img/cinemas.jpg"
 
 export default function Categories() {
-  const { nowPlayingLocal, nowPlayingIntl, upcoming } =
-    useContext(MovieAPIContext)
+  const { nowPlayingIntl, upcoming } = useContext(MovieAPIContext)
 
   const CategoryText = ({ title = "Hello World", buttonText = "View" }) => {
     return (
