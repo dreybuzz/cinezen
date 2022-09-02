@@ -69,9 +69,7 @@ export default function App() {
   }
 
   // News
-  const [newsCache, setNewsCache] = useState(
-    localStorage.getItem("news-cache") || null
-  )
+  const [newsCache] = useState(localStorage.getItem("news-cache") || null)
   const [news, setNews] = useState(newsCache ? JSON.parse(newsCache) : [])
   async function getNews() {
     const URL = `https://newsdata.io/api/1/news?apikey=${NEWS_API_KEY}&q=movies`
