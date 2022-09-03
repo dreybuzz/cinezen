@@ -44,10 +44,7 @@ export default function Categories() {
       {upcoming[0] && (
         <div className="category">
           <img
-            src={
-              BASE_MOVIE_IMAGES_URL +
-              upcoming[Math.floor(Math.random() * upcoming.length)]?.poster_path
-            }
+            src={BASE_MOVIE_IMAGES_URL + upcoming[0]?.poster_path}
             alt="Upcoming Movies"
             className="category-image"
           />

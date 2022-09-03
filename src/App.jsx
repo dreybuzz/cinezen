@@ -8,6 +8,7 @@ import MoviesGrid from "./components/MoviesGrid/MoviesGrid"
 import NewsSlide from "./components/NewsSlide/NewsSlide"
 import Partners from "./components/Partners/Partners"
 import { sortCartByCinema, sortCartByMovie } from "./constants/helperFunctions"
+import { cinemas } from "./constants/cinemas"
 
 const MOVIES_API_KEY = "9e1f73b46b9839eb16cdad61cd9511c8"
 const NEWS_API_KEY = "pub_10805266a41af8a7b2f48a644804fc6c72775"
@@ -91,16 +92,15 @@ export default function App() {
   const [cart, setCart] = useState([])
   const [cartByMovie, setCartByMovie] = useState(sortCartByMovie(cart))
   const [cartByCinema, setCartByCinema] = useState(sortCartByCinema(cart))
-  function updateCart(action, item) {
+  function updateCart(action, item, key = "id") {
     if (action === "add") {
       setCart((cart) => [...cart, item])
     } else if (action === "delete") {
-      // console.log(item)
-      setCart(() => cart.filter((cart) => cart.id !== item.id))
+      setCart(() => cart.filter((cart) => cart[key] !== item[key]))
     } else if (action === "update") {
       setCart(() =>
         cart.map((cartItem) => {
-          if (item.id === cartItem.id) {
+          if (item.id === cartItem[key]) {
             return item
           } else {
             return cartItem
@@ -113,8 +113,12 @@ export default function App() {
   useEffect(() => {
     setCartByMovie(sortCartByMovie(cart))
     setCartByCinema(sortCartByCinema(cart))
-    console.log(sortCartByCinema(cart))
+    // console.log(cart)
   }, [cart])
+
+  const [buyNowMovie, setBuyNowMovie] = useState(0)
+  const [buyNowMovieQuantity, setBuyNowMovieQuantity] = useState(1)
+  const [buyNowModalOverlayShown, setBuyNowOverlayModalShown] = useState(false)
 
   return (
     <MovieAPIContext.Provider
@@ -127,6 +131,13 @@ export default function App() {
         cartByMovie,
         cartByCinema,
         updateCart,
+        buyNowMovie,
+        setBuyNowMovie,
+        buyNowMovieQuantity,
+        setBuyNowMovieQuantity,
+        buyNowModalOverlayShown,
+        setBuyNowOverlayModalShown,
+        cinemas,
       }}>
       <Layout>
         <Slider />

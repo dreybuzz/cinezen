@@ -53,7 +53,6 @@ export default function Slider() {
                 ? 0
                 : visibleImageIndex + 1
             )
-            // setSlideAnimation("")
           }}>
           <i className="fa-solid fa-angle-right"></i>
         </div>
